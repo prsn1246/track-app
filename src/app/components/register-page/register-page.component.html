@@ -1,0 +1,94 @@
+<div class="p-md-4">
+  <div class="container-fluid col-12 col-xl-11 mt-5 px-md-3">
+    <div class="row mt-5 pt-5 px-3">
+        <!-- <p>register-page works!</p> -->
+        <div class="col-12 col-md-5 col-lg-5 col-xl-8">
+
+            <h1 class="text-white welcome-text">Welcome to Web Track</h1>
+        </div>
+        <div class="col-12 col-md-7 col-lg-6 col-xl-4 bg-info">
+            <div class="p-4">
+                <form *ngIf="!showRegisterForm" class="needs-validation" [formGroup]="loginForm" (ngSubmit)="submitLogin(loginForm)">
+                    <div class="form-row mb-3">
+                      <div class="col-md-12 mb-3">
+                        <label for="validationCustom03">Email</label>
+                        <input type="text" [ngClass]="{'is-invalid': l.email.touched && (l.email.hasError('required') || l.email.hasError('pattern')),
+                        'is-valid': l.email.valid && l.email.touched}" formControlName="email" class="form-control" id="validationCustom03" placeholder="Email" required>
+                        <div *ngIf="l.email.touched && l.email.hasError('pattern')"  class="invalid-feedback">
+                          Please provide a valid Email.
+                        </div>
+                        <div *ngIf="l.email.touched && l.email.hasError('required')"  class="invalid-feedback">
+                            Email Required!
+                          </div>
+                      </div>
+                      <div class="col-md-12 mb-3">
+                        <label for="validationCustom04">Password</label>
+                        <input type="password"  [ngClass]="{'is-invalid': l.password.touched && l.password.hasError('required'),
+                        'is-valid': l.password.valid && l.password.touched}" formControlName="password" class="form-control" id="validationCustom04" placeholder="Password" required>
+                        <div class="invalid-feedback">
+                          Password Required!
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-inline">
+                        <button class="btn text-white float-right mb-4" type="submit">Submit form</button>
+                    </div>
+                  </form>
+                <form *ngIf="showRegisterForm" class="needs-validation"  [formGroup]="registerForm"  (ngSubmit)="submitRegisterData(registerForm.value)">
+                    <div class="form-row mb-3">
+                      <div class="col-md-12 mb-3">
+                        <label for="validationCustom01">*Full name</label>
+                        <input type="text" [ngClass]="{'is-invalid': r.full_name.touched && r.full_name.hasError('required'),
+                        'is-valid': r.full_name.valid && r.full_name.touched}" formControlName="full_name" name="full_name"  class="form-control"
+                         id="validationCustom01" placeholder="First name" >
+                        <div class="invalid-feedback">
+                          Full Name  Required!
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-3">
+                        <label for="validationCustom03">*Email</label>
+                        <input type="text" [ngClass]="{'is-invalid': r.email.touched && (r.email.hasError('required') || r.email.hasError('pattern')),
+                        'is-valid': r.email.valid && r.email.touched}" formControlName="email" class="form-control" id="validationCustom03">
+                        <div *ngIf="r.email.touched && r.email.hasError('pattern')"  class="invalid-feedback">
+                          Please provide a valid Email.
+                        </div>
+                        <div *ngIf="r.email.touched && r.email.hasError('required')"  class="invalid-feedback">
+                            Email Required!
+                          </div>
+                      </div>
+                      <div class="col-md-12 mb-3">
+                        <label for="validationCustom02">*Password</label>
+                        <input type="password" [ngClass]="{'is-invalid': r.password.touched && r.password.hasError('required'),
+                        'is-valid': r.password.valid && r.password.touched}" formControlName="password" name="password" class="form-control" id="validationCustom02" required>
+                        <div class="invalid-feedback">
+                          Password Required!
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-3">
+                        <label for="validationCustom04">Mobile Number</label>
+                        <input  [ngClass]="{'is-invalid': r.contact_number.touched && (r.contact_number.hasError('required') || r.contact_number.hasError('pattern')),
+                        'is-valid': r.contact_number.valid && r.contact_number.touched}" formControlName="contact_number" name="contact_number"
+                         type="text" class="form-control" id="validationCustom04" placeholder="Mobile Number" required>
+                         <div  *ngIf="r.contact_number.hasError('pattern')"  class="invalid-feedback">
+                            Please enter valid Mobile number.
+                       </div>
+                        <div *ngIf="r.contact_number.touched && r.contact_number.hasError('required')"  class="invalid-feedback">
+                          Mobile Number Required!
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="d-inline">
+                        <button class="btn text-white float-right mb-4" type="submit">Submit form</button>
+                    </div>
+                  </form>
+            </div>
+            <div class="col-12 mt-4 p-4 ml-1 info-text">
+                <p *ngIf="!showRegisterForm" class="mt-2 text-white">Not Signed up yet ? <b class="cursor-pointer" (click)="showForm()">Sign Up Now</b> </p>
+                <p *ngIf="showRegisterForm" class="mt-2 text-white">Already have account ? <b class="cursor-pointer" (click)="showForm()">Login In Now</b> </p>
+            </div>
+        </div>
+
+    </div>
+  </div>
+</div>
