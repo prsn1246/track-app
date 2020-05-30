@@ -107,7 +107,6 @@ export class RegisterPageComponent implements OnInit {
         emailAddress: this.l.email.value,
         password: this.l.password.value,
       }
-      console.log('login info', info);
       this.apiService.authenticate_user_details(info)
       .then((res) => {
         if(res['message'].includes('Success')){

@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
     public router: Router,
     public route: ActivatedRoute) { 
       this.route.params.subscribe((params) => {
-        console.log('selected category...', params['id']);
         this.userId = params['id'];
         this.getUSerLogs(params['id']);
       })
@@ -89,7 +88,6 @@ export class HomeComponent implements OnInit {
     doc.click();
 
     let storageData = JSON.parse(localStorage.getItem('userTimeFrames'));
-    console.log('data..', storageData);
     storageData.logoutTime = moment().format();
     storageData.hoursWorked = this.timer;
     let momentTime = moment(storageData.loginTime).format();
